@@ -3,3 +3,23 @@ a.active { color: green; }
 .slide {
   height: 300px; background-color: #eee;
 }
+
+.slide.green {
+  background-color: green;
+}
+
+.slide.blue {
+  background-color: blue;
+}
+
+.slide.yellow {
+  background-color: yellow;
+}
+
+.slide.red {
+  background-color: red;
+}
+
+.slide.purple {
+  background-color: purple;
+}

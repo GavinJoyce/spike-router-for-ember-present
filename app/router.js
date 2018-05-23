@@ -12,12 +12,10 @@ const Router = EmberRouter.extend({
     let dsl = this._super(...arguments);
 
     let slides = this.get('slides');
-    console.log('slides', slides);
 
     dsl.__proto__.slide = function() {
-      // console.log('slide', arguments, this.parent); //TODO: GJ: setup slide map here
-
       let name = arguments[0];
+      let config = arguments[1]; //TODO: GJ: this should be optional
       let parent = this.parent;
       let path;
 
@@ -27,8 +25,7 @@ const Router = EmberRouter.extend({
         path = `${parent}.${name}`;
       }
 
-      console.log(path);
-      slides.registerSlide(path);
+      slides.registerSlide(path, config);
       dsl.__proto__.route.apply(this, arguments);
     }
 
@@ -37,13 +34,13 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.slide('slide-1', { title: 'Slide 1' }, function() {
-    this.slide('sub-1', { title: 'Subslide 1' }, function() {
-      this.slide('sub-11', { title: 'Subslide 11' });
+  this.slide('slide-1', { style: 'green' }, function() {
+    this.slide('sub-1', { style: 'blue' }, function() {
+      this.slide('sub-11', { style: 'yellow' });
     });
-    this.slide('sub-2', { title: 'Subslide 2' });
+    this.slide('sub-2', { style: 'red' });
   });
-  this.slide('slide-2', { title: 'Slide 2' });
+  this.slide('slide-2', { style: 'purple' });
 });
 
 export default Router;

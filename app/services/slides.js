@@ -15,6 +15,13 @@ export default Service.extend({
     }
   }),
 
+  currentSlide: Em.computed('slideRoutes.[]', 'currentSlideIndex', function() {
+    let slideRoutes = this.get('slideRoutes');
+    let currentSlideIndex = this.get('currentSlideIndex');
+
+    return slideRoutes[currentSlideIndex];
+  }),
+
   currentSlideIndex: Em.computed('slideRouteNames.[]', 'currentSlideRouteName', function() {
     let currentSlideRouteName = this.get('currentSlideRouteName');
     return this.get('slideRouteNames').indexOf(currentSlideRouteName);
@@ -70,15 +77,17 @@ export default Service.extend({
     return slideRouteNames[nextSlideIndex];
   }),
 
-  slideCount: Em.computed.alias('slideRouteNames.length'),
+  slideCount: Em.computed.readOnly('slideRouteNames.length'),
 
   init() {
     this._super(...arguments);
+    this.set('slideRoutes', []);
     this.set('slideRouteNames', []);
   },
 
-  registerSlide(path) {
-    this.get('slideRouteNames').push(path);
+  registerSlide(path, config = {}) {
+    this.get('slideRoutes').push({ path, config });
+    this.get('slideRouteNames').push(path); //TODO: CP from slideRoutes
   },
 
   actions: {

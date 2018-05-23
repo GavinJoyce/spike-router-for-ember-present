@@ -4,8 +4,7 @@
 Slide {{slides.currentSlideNumber}} of {{slides.slideCount}}
 
 <hr>
-
-<div class="slide">
+<div class="slide {{slides.currentSlide.config.style}}">
   {{outlet}}
 </div>
 
