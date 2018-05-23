@@ -1,5 +1,25 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<button onclick={{action 'previous' target=slides}}>Prev</button>
+<button onclick={{action 'next' target=slides}}>Next</button>
 
 {{outlet}}
+
+<hr>
+
+<ul>
+  <li>slides.router.currentRouteName: {{slides.router.currentRouteName}}</li>
+  <li>slides.currentSlideRouteName: {{slides.currentSlideRouteName}}</li>
+  <li>slides.slideCount: {{slides.slideCount}}</li>
+  <li>currentSlideIndex: {{slides.currentSlideIndex}}</li>
+  <li>previousSlideIndex: {{slides.previousSlideIndex}}</li>
+  <li>nextSlideIndex: {{slides.nextSlideIndex}}</li>
+  <li>previousSlideRouteName: {{slides.previousSlideRouteName}}</li>
+  <li>nextSlideRouteName: {{slides.nextSlideRouteName}}</li>
+</ul>
+
+
+<ul>
+  {{#each slides.slideRouteNames as |routeName|}}
+    <li>{{link-to routeName routeName}}</li>
+  {{/each}}
+</ul>
+<hr>
