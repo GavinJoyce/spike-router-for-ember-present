@@ -20,6 +20,10 @@ export default Service.extend({
     return this.get('slideRouteNames').indexOf(currentSlideRouteName);
   }),
 
+  currentSlideNumber: Em.computed('currentSlideIndex', function() {
+    return this.get('currentSlideIndex') + 1;
+  }),
+
   previousSlideIndex: Em.computed('currentSlideIndex', function() {
     let currentSlideIndex = this.get('currentSlideIndex');
 
@@ -34,6 +38,19 @@ export default Service.extend({
     let slideRouteNames = this.get('slideRouteNames');
     let previousSlideIndex = this.get('previousSlideIndex');
     return slideRouteNames[previousSlideIndex];
+  }),
+
+  hasPreviousSlide: Em.computed('currentSlideIndex', function() {
+    let currentSlideIndex = this.get('currentSlideIndex');
+
+    return currentSlideIndex > 0;
+  }),
+
+  hasNextSlide: Em.computed('currentSlideIndex', 'slideCount', function() {
+    let currentSlideIndex = this.get('currentSlideIndex');
+    let slideCount = this.get('slideCount');
+
+    return currentSlideIndex < slideCount - 1;
   }),
 
   nextSlideIndex: Em.computed('slideCount', 'currentSlideIndex', function() {

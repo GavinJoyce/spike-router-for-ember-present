@@ -1,1 +1,5 @@
 a.active { color: green; }
+
+.slide {
+  height: 300px; background-color: #eee;
+}

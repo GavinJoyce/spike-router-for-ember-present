@@ -1,7 +1,13 @@
-<button onclick={{action 'previous' target=slides}}>Prev</button>
-<button onclick={{action 'next' target=slides}}>Next</button>
+<button onclick={{action 'previous' target=slides}} disabled={{not slides.hasPreviousSlide}}>Prev</button>
+<button onclick={{action 'next' target=slides}} disabled={{not slides.hasNextSlide}}>Next</button>
 
-{{outlet}}
+Slide {{slides.currentSlideNumber}} of {{slides.slideCount}}
+
+<hr>
+
+<div class="slide">
+  {{outlet}}
+</div>
 
 <hr>
 
@@ -11,6 +17,8 @@
   <li>slides.slideCount: {{slides.slideCount}}</li>
   <li>currentSlideIndex: {{slides.currentSlideIndex}}</li>
   <li>previousSlideIndex: {{slides.previousSlideIndex}}</li>
+  <li>hasPreviousSlide: {{slides.hasPreviousSlide}}</li>
+  <li>hasNextSlide: {{slides.hasNextSlide}}</li>
   <li>nextSlideIndex: {{slides.nextSlideIndex}}</li>
   <li>previousSlideRouteName: {{slides.previousSlideRouteName}}</li>
   <li>nextSlideRouteName: {{slides.nextSlideRouteName}}</li>
