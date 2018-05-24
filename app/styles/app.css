@@ -1,7 +1,17 @@
+
+:root {
+    --highlightBackgroundColor: #ffd7e5;
+    --highlightColor: #fd367e;
+    --tertiaryColor: #932b77;
+    --secondaryColor: #4e1184;
+    --primaryColor: #0e1555;
+    --header-height: 30px;
+}
+
 a.active { color: green; }
 
 .slide {
-  height: 300px; background-color: #eee;
+  height: 400px; background-color: #eee;
 }
 
 .slide.green {
@@ -9,7 +19,7 @@ a.active { color: green; }
 }
 
 .slide.blue {
-  background-color: blue;
+  background-color: lightblue;
 }
 
 .slide.yellow {
@@ -22,4 +32,115 @@ a.active { color: green; }
 
 .slide.purple {
   background-color: purple;
+}
+
+.slide.black {
+  background-color: black;
+  color: #aaa;
+}
+
+.counter .animated-container {
+    font-size: 13rem;
+    float: left;
+}
+
+.counter button {
+    float: left;
+    font-size: 3rem;
+}
+
+.counter span {
+    border: 1px solid var(--highlightColor);
+    padding: 2rem;
+}
+
+.counter > .animated-container {
+    border: 1px solid var(--primaryColor);
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+
+.mascots {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mascots .mascot-card {
+    margin: 10px;
+}
+
+.mascot-card {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    padding: 30px;
+    width: 250px;
+    height: 125px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.mascot-card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.mascot-card > img, .mascot-card > .animated-container {
+    flex-shrink: 0;
+}
+
+.mascot-icon {
+    width: 100px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.mascot-icon img {
+    height: 100%;
+}
+
+.mascot-card-image {
+    width: auto;
+    height: 126px;
+}
+
+.mascot-detail-image {
+    width: auto;
+    height: 250px;
+}
+
+.mascot-detail {
+    display: grid;
+    grid-template-columns: 450px auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+          ".      header"
+          "left   right";
+
+}
+
+.mascot-detail .image-container {
+    grid-area: left;
+    display: flex;
+    justify-content: center;
+}
+
+.mascot-detail .text-container {
+    grid-area: right;
+}
+
+.mascot-detail h2 {
+    grid-area: header;
 }

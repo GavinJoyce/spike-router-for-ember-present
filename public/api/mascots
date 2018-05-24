@@ -1,0 +1,85 @@
+{
+  "data": [
+    {
+      "type": "mascots",
+      "id": 44,
+      "attributes": {
+        "title": "5K Tomster",
+        "image-url": "https://emberjs.com/images/tomsters/5k-b40d9a3a.png",
+        "introduced-date": "March 12, 2014"
+      },
+      "relationships": {
+        "tags": {
+          "data": [
+            {
+              "id": 0,
+              "type": "tags"
+            },
+            {
+              "id": 1,
+              "type": "tags"
+            },
+            {
+              "id": 5,
+              "type": "tags"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "mascots",
+      "id": 45,
+      "attributes": {
+        "title": "Stable Release Bust",
+        "image-url": "https://emberjs.com/images/tomsters/3-release-3ad1bfdf.png",
+        "introduced-date": "December 2, 2013"
+      },
+      "relationships": {
+        "tags": {
+          "data": [
+            {
+              "id": 0,
+              "type": "tags"
+            },
+            {
+              "id": 1,
+              "type": "tags"
+            },
+            {
+              "id": 5,
+              "type": "tags"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "mascots",
+      "id": 46,
+      "attributes": {
+        "title": "Canary Release Bust",
+        "image-url": "https://emberjs.com/images/tomsters/1-canary-6195a553.png",
+        "introduced-date": "December 2, 2013"
+      },
+      "relationships": {
+        "tags": {
+          "data": [
+            {
+              "id": 0,
+              "type": "tags"
+            },
+            {
+              "id": 1,
+              "type": "tags"
+            },
+            {
+              "id": 5,
+              "type": "tags"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
