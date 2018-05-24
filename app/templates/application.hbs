@@ -1,3 +1,5 @@
+{{animated-orphans}}
+
 <button onclick={{action 'previous' target=slides}} disabled={{not slides.hasPreviousSlide}}>Prev</button>
 <button onclick={{action 'next' target=slides}} disabled={{not slides.hasNextSlide}}>Next</button>
 
@@ -5,7 +7,7 @@ Slide {{slides.currentSlideNumber}} of {{slides.slideCount}}
 
 <hr>
 <div class="slide {{slides.currentSlide.config.style}}">
-  {{outlet}}
+  {{slideshow-outlet}}
 </div>
 
 <hr>
@@ -22,7 +24,6 @@ Slide {{slides.currentSlideNumber}} of {{slides.slideCount}}
   <li>previousSlideRouteName: {{slides.previousSlideRouteName}}</li>
   <li>nextSlideRouteName: {{slides.nextSlideRouteName}}</li>
 </ul>
-
 
 <ul>
   {{#each slides.slideRouteNames as |routeName|}}

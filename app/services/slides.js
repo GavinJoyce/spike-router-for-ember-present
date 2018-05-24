@@ -1,18 +1,31 @@
 import Service, { inject as service } from '@ember/service';
 
+function getRouteHierarchyPaths(routeName) {
+  let paths = [];
+
+  let segments = routeName.split('.');
+
+  for (var i = segments.length; i > 0; i--) {
+    let routeSegments = segments.slice(0, i);
+    paths.push(routeSegments.join('.'));
+  }
+
+  return paths;
+}
+
 export default Service.extend({
   router: service(),
 
   currentSlideRouteName: Em.computed('slideRouteNames.[]', 'router.currentRouteName', function() {
     let slideRouteNames = this.get('slideRouteNames');
     let currentRouteName = this.get('router.currentRouteName');
-    currentRouteName = currentRouteName.replace(/\.index$/, '');
 
-    if (slideRouteNames.includes(currentRouteName)) {
-      return currentRouteName;
-    } else {
-      return undefined;
+    for (let path of getRouteHierarchyPaths(currentRouteName)) {
+      if (slideRouteNames.includes(path)) {
+        return path;
+      }
     }
+
   }),
 
   currentSlide: Em.computed('slideRoutes.[]', 'currentSlideIndex', function() {
@@ -90,14 +103,21 @@ export default Service.extend({
     this.get('slideRouteNames').push(path); //TODO: CP from slideRoutes
   },
 
+  previous() {
+    let previousSlideRouteName = this.get('previousSlideRouteName');
+    this.get('router').transitionTo(previousSlideRouteName);
+  },
+  next() {
+    let nextSlideRouteName = this.get('nextSlideRouteName');
+    this.get('router').transitionTo(nextSlideRouteName);
+  },
+
   actions: {
     previous() {
-      let previousSlideRouteName = this.get('previousSlideRouteName');
-      this.get('router').transitionTo(previousSlideRouteName);
+      this.previous();
     },
     next() {
-      let nextSlideRouteName = this.get('nextSlideRouteName');
-      this.get('router').transitionTo(nextSlideRouteName);
+      this.next();
     }
   }
 });

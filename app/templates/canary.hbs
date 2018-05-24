@@ -1,0 +1,13 @@
+<h1>Canary!</h1>
+
+{{#animated-container class="image-container"}}
+  {{#animated-value model.canary group="images" use=transition duration=duration}}
+    <img class="mascot-detail-image" src={{model.canary.imageURL}} />
+  {{/animated-value}}
+  {{#animated-value model.beta group="images" use=transition duration=duration}}
+    <img class="mascot-detail-image" src={{model.beta.imageURL}} />
+  {{/animated-value}}
+  {{#animated-value model.runner group="images" use=transition duration=duration}}
+    <img class="mascot-detail-image" src={{model.runner.imageURL}} />
+  {{/animated-value}}
+{{/animated-container}}

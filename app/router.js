@@ -1,6 +1,8 @@
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 import { inject as service } from '@ember/service';
+import fade from 'ember-animated/transitions/fade';
+import { toLeft, toRight } from 'ember-animated/transitions/move-over';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
@@ -36,11 +38,22 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.slide('slide-1', { style: 'green' }, function() {
     this.slide('sub-1', { style: 'blue' }, function() {
-      this.slide('sub-11', { style: 'yellow' });
+      this.route('sub-11', { style: 'yellow' });
     });
     this.slide('sub-2', { style: 'red' });
   });
   this.slide('slide-2', { style: 'purple' });
+  this.slide('route-transitions', { style: 'blue' }, function() {
+    this.route('child', { path: '/:id' });
+  });
+  this.slide('canary', { style: 'blue' });
+  this.slide('thanks', { style: 'black' });
 });
 
 export default Router;
+
+export const slideTransitionDuration = 800;
+
+export const transitions = [
+  { from: 'route-transitions.index', to: 'route-transitions.child', use: toLeft, reverse: toRight },
+];
